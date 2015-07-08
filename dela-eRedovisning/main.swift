@@ -18,7 +18,7 @@ func accountOnPage(page: PDFPage) -> String? {
     let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
     
     for line in lines {
-        let m = accountnumber?.matchesInString(line, options: nil, range: NSMakeRange(0, countElements(line)))
+        let m = accountnumber?.matchesInString(line, options: nil, range: NSMakeRange(0, count(line)))
         if m?.count > 0 {
             return line
         }
@@ -37,7 +37,7 @@ func numberOnPage(page: PDFPage) -> String? {
         if getTheNextOne {
             return line
         }
-        let m = snumber?.matchesInString(line, options: nil, range: NSMakeRange(0, countElements(line)))
+        let m = snumber?.matchesInString(line, options: nil, range: NSMakeRange(0, count(line)))
         if let r : NSTextCheckingResult = m?.first as? NSTextCheckingResult {
             if r.rangeAtIndex(1).length > 0 {
                 let q = line as NSString
@@ -49,7 +49,7 @@ func numberOnPage(page: PDFPage) -> String? {
     return nil
 }
 
-if countElements(Process.arguments) < 2 {
+if count(Process.arguments) < 2 {
     println("dela-eRedovisning <filnamn> ...")
     exit(1)
 }
