@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0326D33B1AC5557D0034391C /* dela-eRedovisning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "dela-eRedovisning"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0326D33E1AC5557D0034391C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0367C9731B4D752100374C28 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		0326D3321AC5557D0034391C = {
 			isa = PBXGroup;
 			children = (
+				0367C9731B4D752100374C28 /* README.md */,
 				0326D33D1AC5557D0034391C /* dela-eRedovisning */,
 				0326D33C1AC5557D0034391C /* Products */,
 			);
@@ -233,6 +235,7 @@
 				0326D3441AC5557D0034391C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
