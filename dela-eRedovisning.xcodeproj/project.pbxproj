@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0326D33F1AC5557D0034391C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326D33E1AC5557D0034391C /* main.swift */; };
+		03F4041B1C6C7538007BC8DF /* dela-eRedovisning in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0326D33B1AC5557D0034391C /* dela-eRedovisning */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0326D3391AC5557D0034391C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = /usr/local/bin;
 			dstSubfolderSpec = 0;
 			files = (
+				03F4041B1C6C7538007BC8DF /* dela-eRedovisning in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -90,7 +92,9 @@
 		0326D3331AC5557D0034391C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Aderstedt Software AB";
 				TargetAttributes = {
 					0326D33A1AC5557D0034391C = {
@@ -146,6 +150,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
