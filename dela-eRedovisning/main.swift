@@ -14,11 +14,11 @@ func accountOnPage(page: PDFPage) -> String? {
     // Look for line with "Kontonr", and then get the next line that doesn't match "Utg".
 
     let s = page.string()
-    let accountnumber : NSRegularExpression? = NSRegularExpression(pattern: "^[0-9 ]+-[0-9]+ (SEK|EUR)$", options: nil, error: nil)
+    let accountnumber : NSRegularExpression? = try? NSRegularExpression(pattern: "^[0-9 ]+-[0-9]+ (SEK|EUR)$", options: [])
     let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
     
     for line in lines {
-        let m = accountnumber?.matchesInString(line, options: nil, range: NSMakeRange(0, count(line)))
+        let m = accountnumber?.matchesInString(line, options: [], range: NSMakeRange(0, line.characters.count))
         if m?.count > 0 {
             return line
         }
@@ -31,14 +31,14 @@ func numberOnPage(page: PDFPage) -> String? {
     
     let s = page.string()
     let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-    let snumber : NSRegularExpression? = NSRegularExpression(pattern: "^Nummer ?([0-9]+)?", options: nil, error: nil)
+    let snumber : NSRegularExpression? = try? NSRegularExpression(pattern: "^Nummer ?([0-9]+)?", options: [])
     var getTheNextOne = false
     for line in lines {
         if getTheNextOne {
             return line
         }
-        let m = snumber?.matchesInString(line, options: nil, range: NSMakeRange(0, count(line)))
-        if let r : NSTextCheckingResult = m?.first as? NSTextCheckingResult {
+        let m = snumber?.matchesInString(line, options: [], range: NSMakeRange(0, line.characters.count))
+		if let r = m?.first {
             if r.rangeAtIndex(1).length > 0 {
                 let q = line as NSString
                 return (q.substringWithRange(r.rangeAtIndex(1)) as String)
@@ -49,8 +49,8 @@ func numberOnPage(page: PDFPage) -> String? {
     return nil
 }
 
-if count(Process.arguments) < 2 {
-    println("dela-eRedovisning <filnamn> ...")
+if Process.arguments.count < 2 {
+    print("dela-eRedovisning <filnamn> ...")
     exit(1)
 }
 
@@ -70,7 +70,7 @@ for argument in Process.arguments[1..<c] {
                     if anum != currentAccount || dnum != currentNumber {
                         if let odoc = outputDoc {
                             odoc.writeToFile("\(currentAccount) - \(currentNumber).pdf")
-                            println("Writing \(currentAccount) - \(currentNumber).pdf")
+                            print("Writing \(currentAccount) - \(currentNumber).pdf")
                         }
                         outputDoc = PDFDocument()
                         currentAccount = anum
@@ -84,7 +84,7 @@ for argument in Process.arguments[1..<c] {
         }
         if let odoc = outputDoc {
             odoc.writeToFile("\(currentAccount) - \(currentNumber).pdf")
-            println("Writing \(currentAccount) - \(currentNumber).pdf")
+            print("Writing \(currentAccount) - \(currentNumber).pdf")
         }
     }
 }
